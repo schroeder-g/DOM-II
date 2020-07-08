@@ -69,16 +69,19 @@ document.addEventListener('keydown', function(e){
 navItems[navItems.length-1].addEventListener("click", addElement)
 
 function addElement(){
-    let newDiv = document.createElement("div"); 
-    let newContent = document.createTextNode("Aloha! Alwiedersehen! Ciao! Konichiwa!"); 
-    newDiv.appendChild(newContent); 
-    
-    let anchorDiv = document.querySelector(".home");
-    document.body.insertBefore(newDiv, anchorDiv);
+    const newDiv = document.createElement("div");
     newDiv.style.display = "flex";
     newDiv.style.justifyContent = "center";
     newDiv.style.fontSize = "2rem";
     newDiv.style.margin = "1rem";
+
+    const newContent = document.createTextNode("Aloha! Alwiedersehen! Ciao! Konichiwa!"); 
+    newDiv.appendChild(newContent); 
+
+    const anchorDiv = document.querySelector(".home");
+
+    document.body.insertBefore(newDiv, anchorDiv);
+    
 }
 
 /* 10 Clicking on a Destination makes it dissapear*/
