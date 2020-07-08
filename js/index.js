@@ -4,16 +4,14 @@
 // console.log(pix)
 /* 2 */ const title = document.querySelector('.logo-heading')
 // console.log(title)
-/* 3 */ const destinations = Array.from(document.querySelectorAll('.destination'))  
-// console.log(destinations)
 /* 4 */ const contentHeaders = Array.from(document.querySelectorAll('h2'))
 // console.log(contentHeaders)
 /* 5 */ const buttons = Array.from(document.querySelectorAll('.btn'))
 //console.log(buttons)
 /* 6 */ const navItems = Array.from(document.getElementsByTagName('a'))
 //console.log(navItems)
-/* 7 */ const navbar = document.querySelector('.main-navigation')
-//console.log(navbar)
+/* 7 */ const destinations = Array.from(document.querySelectorAll('.destination'))
+
 
 
 // initialize color randomizer
@@ -46,18 +44,33 @@ navItems[anchor].addEventListener("mouseleave", function(){
     this.style.color = "black"
     })
 }
-/* 6  Make Destinations Draggable*/
+/* 6  Make Sections Draggable*/
+for (let locale = 0; locale < destinations.length; locale++){
+    destinations[locale].addEventListener('dragstart', dragStart)
+    destinations[locale].addEventListener('dragend', dragEnd)
+}
 
+function dragStart(){
+    this.classList += " hold";
+    setTimeout(() => (this.classList = "invisible"), 0)
+}
 /* 7 */
-
+function dragEnd(){
+    this.classList = "destination"
+}
 /* 8 */
-
+document.addEventListener('keydown', function(e){
+    if (e.key === "Escape"){
+        title.innerText = "You Can Never Leave"
+    }
+}
+)
 /* 9  Clicking Contact creates a new section at the bottom of the page*/
 navItems[navItems.length-1].addEventListener("click", addElement)
 
 function addElement(){
     let newDiv = document.createElement("div"); 
-    let newContent = document.createTextNode("Aloha! Alweiderzein! Ciao! Konichiwa!"); 
+    let newContent = document.createTextNode("Aloha! Alwiedersehen! Ciao! Konichiwa!"); 
     newDiv.appendChild(newContent); 
     
     let anchorDiv = document.querySelector(".home");
@@ -69,9 +82,9 @@ function addElement(){
 }
 
 /* 10 Clicking on a Destination makes it dissapear*/
-    for (let locale = 0 ; locale < destinations.length; locale++){
-        destinations[locale].addEventListener("click", function(){
-            destinations[locale].classList = "invisible"
+    for (let title = 0 ; title < contentHeaders.length; title++){
+        contentHeaders[title].addEventListener("click", function(){
+            contentHeaders[title].classList = "invisible"
         })
     }
 
